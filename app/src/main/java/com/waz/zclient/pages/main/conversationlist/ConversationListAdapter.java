@@ -362,10 +362,11 @@ public class ConversationListAdapter extends BaseAdapter {
         conversationListRowItem.setAlpha(1f);
         conversationListRowItem.setMaxAlpha(maxAlpha);
         conversationListRowItem.setId(position);
-        conversationListRowItem.setSwipeable(mode == ConversationListFragment.Mode.NORMAL);
 
         // integrate model
         final IConversation conversation = getItem(position);
+
+        conversationListRowItem.setSwipeable(mode == ConversationListFragment.Mode.NORMAL && !(conversation instanceof InboxLinkConversation));
 
         if (isArchived(position)) {
             conversationListRowItem.setBackgroundColor(parent.getResources().getColor(R.color.list_archive_box__background_color));
